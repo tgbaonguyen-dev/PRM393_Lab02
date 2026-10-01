@@ -1,4 +1,4 @@
-# Information Architecture & User Flows — Dự án PicKet
+# Information Architecture & User Flows
 
 ## Quản lý chi tiêu, lưu giữ khoảnh khắc mua sắm (Chụp → Hiểu → Kiểm soát → Nhớ lại)
 

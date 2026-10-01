@@ -77,11 +77,26 @@ $$\textbf{Chụp} \longrightarrow \textbf{Hiểu} \longrightarrow \textbf{Kiểm
 2. **Quên chi tiêu tiền mặt:** Mua đồ nhận hoá đơn giấy thường vứt xó và quên mất.
 3. **Thiếu cảnh báo sớm:** Chỉ nhận ra hết tiền khi số dư đã về 0, thiếu cảnh báo khi tốc độ tiêu tiền trong tuần vượt trần.
 
+#### Nhu cầu Accessibility (Khả năng tiếp cận)
+
+- **Thị lực & Tương phản:** Cần độ tương phản chữ rõ ràng (WCAG AA ≥ 4.5:1), đặc biệt là các con số tài chính lớn, dễ đọc ngoài trời sáng.
+- **Vùng tương tác:** Phím số và nút bấm lưu phải lớn (Touch target tối thiểu 48 × 48 dp) để không bấm nhầm chữ số khi đang thao tác một tay lúc di chuyển.
+
 #### Mục tiêu (Goals)
 
 1. Ghi lại chi tiêu cực nhanh ngay khi phát sinh (dưới 15 giây nếu nhập tay, hoặc 1 cú chụp ảnh hoá đơn).
 2. Tự động kiểm soát không để chi tiêu vượt ngân sách tháng đã đặt ra.
 3. Xem được bức tranh tài chính rõ ràng để biết mình đang tiêu lãng phí vào mục nào nhất.
+
+### 3.3. Câu phát biểu vấn đề (Problem Statement)
+
+> Người trẻ và sinh viên sống tự lập cần một phương thức ghi nhận chi tiêu tức thì qua camera kèm ngữ cảnh và cơ chế cảnh báo ngân sách không phán xét, vì việc quản lý tài chính phân tán và nhập liệu thủ công phức tạp hiện tại thường khiến họ nản lòng, bỏ cuộc và rơi vào tình trạng thâm hụt tài chính mất kiểm soát vào cuối tháng.
+
+### 3.4. Tiêu chí thành công đo được (Measurable Success Metrics)
+
+- **Thời gian ghi nhận giao dịch:** Người dùng hoàn tất ghi nhận một khoản chi tiêu mới (chụp hoá đơn qua OCR hoặc nhập tay nhanh) trong **dưới 15 giây**.
+- **Độ tin cậy & Kiểm soát lỗi:** 100% các kết quả nhận diện OCR có độ tin cậy thấp hoặc nghi ngờ sai lệch đều hiển thị cảnh báo trực quan để người dùng kiểm tra/sửa đổi trước khi lưu vào sổ cái.
+- **Hiệu quả phòng ngừa thâm hụt:** Người dùng nhận được phản hồi trực quan (thanh trạng thái đổi màu vàng/đỏ và thông báo giải thích) ngay lập tức khi một khoản chi tiêu mới chạm ngưỡng hoặc vượt hạn mức ngân sách danh mục trong tháng.
 
 ---
 
