@@ -28,6 +28,7 @@ Chi tiết kiến trúc thông tin và sơ đồ: [ux/user-flow.md](ux/user-flow
 | Quyết định thiết kế | [design/design-decisions.md](design/design-decisions.md) |
 | Nhật ký thiết kế với AI | [ai/ai-design-log.md](ai/ai-design-log.md) |
 | Flutter handoff | [handoff/flutter-handoff.md](handoff/flutter-handoff.md) |
+| Kế hoạch phân chia công việc nhóm | [TEAM_WORK_DIVISION.md](TEAM_WORK_DIVISION.md) |
 | Ảnh kết quả Google Stitch | `assets/stitch/` |
 | Ảnh export từ Figma | `assets/figma/` |
 
