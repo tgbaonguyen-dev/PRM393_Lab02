@@ -1,0 +1,80 @@
+{
+  "owner": "Thành viên 3",
+  "frame": { "width": 360, "height": 800, "responsiveWidth": 412 },
+  "period": "Tháng 10, 2026",
+  "screens": [
+    {
+      "id": "BD-01", "title": "Ngân sách", "navigation": "Ngân sách",
+      "summary": ["Ngân sách tháng 10", "4.050.000 đ", "Đã chi / 6.000.000 đ · Còn 1.950.000 đ"],
+      "budgets": [
+        {"category":"Ăn uống","spent":1200000,"limit":2000000,"percent":60,"state":"safe"},
+        {"category":"Nhà trọ","spent":2400000,"limit":3000000,"percent":80,"state":"warning"},
+        {"category":"Đi lại","spent":450000,"limit":1000000,"percent":45,"state":"safe"}
+      ],
+      "actions": ["Tạo ngân sách", "Xem phân tích"],
+      "variants": ["Warning: Ăn uống 1.800.000 / 2.000.000 đ · 90%", "Exceeded: Ăn uống 2.200.000 / 2.000.000 đ · 110%"]
+    },
+    {
+      "id": "BD-02", "title": "Ngân sách Ăn uống", "back": "Nguồn thực tế",
+      "summary": ["Đã dùng trong tháng", "1.800.000 đ", "Hạn mức 2.000.000 đ · Còn 200.000 đ"],
+      "status": "Sắp vượt ngân sách · 90%",
+      "explanation": "Bạn đã dùng 90% ngân sách Ăn uống. Còn 200.000 đ đến cuối tháng. Bạn có thể điều chỉnh hạn mức hoặc xem các khoản chi bên dưới.",
+      "transactions": [
+        {"merchant":"Siêu thị thực phẩm","date":"12/10/2026","amount":700000},
+        {"merchant":"Bữa ăn tuần 2","date":"10/10/2026","amount":500000},
+        {"merchant":"Bữa ăn tuần 1","date":"05/10/2026","amount":600000}
+      ],
+      "actions": ["Điều chỉnh hạn mức", "Xem giao dịch nguồn", "Phân tích & báo cáo"]
+    },
+    {
+      "id": "BD-03", "title": "Tạo ngân sách", "editTitle": "Điều chỉnh ngân sách",
+      "fields": [
+        {"label":"Danh mục","value":"Học tập","component":"Select Field"},
+        {"label":"Hạn mức tháng","value":"500.000","unit":"VND","component":"Amount Field"},
+        {"label":"Cảnh báo khi đạt","value":"80%","component":"Text Field","support":"Nhập một giá trị từ 50 đến 100%."},
+        {"label":"Tháng áp dụng","value":"Tháng 10, 2026","component":"Date Field"}
+      ],
+      "edit": {"category":"Ăn uống","previousLimit":2000000,"newLimit":2500000,"spent":1800000,"remaining":700000,"percent":72},
+      "support": "Mỗi danh mục chỉ có một ngân sách trong tháng. Giao dịch đã ghi nhận sẽ được tính vào hạn mức này.",
+      "actions": ["Lưu ngân sách", "Hủy"],
+      "validation": ["Hạn mức phải lớn hơn 0 đ.", "Ngưỡng cảnh báo phải từ 50 đến 100%.", "Ăn uống đã có ngân sách tháng 10. Chọn danh mục khác hoặc điều chỉnh ngân sách hiện tại."]
+    },
+    {
+      "id": "IN-01", "title": "Phân tích chi tiêu",
+      "summary": ["Tổng chi tháng 10", "4.650.000 đ", "3 danh mục · Dữ liệu đến 13/10/2026"],
+      "distribution": [
+        {"category":"Nhà trọ","amount":2400000,"percent":51.6},
+        {"category":"Ăn uống","amount":1800000,"percent":38.7},
+        {"category":"Đi lại","amount":450000,"percent":9.7}
+      ],
+      "alternative": "Nhà trọ 2.400.000 đ (51,6%); Ăn uống 1.800.000 đ (38,7%); Đi lại 450.000 đ (9,7%). Nhà trọ là khoản chi lớn nhất.",
+      "actions": ["Xuất báo cáo", "Xem giao dịch nguồn"],
+      "empty": {"title":"Chưa có dữ liệu phân tích","body":"Tháng này chưa có khoản chi. Thêm một khoản chi để xem cơ cấu chi tiêu.","action":"Thêm khoản chi"}
+    },
+    {
+      "id": "EX-01", "title": "Xuất báo cáo", "back": "IN-01 hoặc ST-01 theo nguồn",
+      "fields": [{"label":"Kỳ báo cáo","value":"Tháng 10, 2026","component":"Date Field"}],
+      "contents": ["Tổng chi & cơ cấu theo danh mục", "Ngân sách, hạn mức & cảnh báo", "Danh sách giao dịch trong tháng"],
+      "preview": "01–31/10/2026 · PDF · 3 danh mục",
+      "actions": ["Tạo PDF"],
+      "processing": "Đang tạo báo cáo PDF… Dữ liệu và lựa chọn của bạn được giữ nguyên.",
+      "ready": {"title":"Báo cáo đã sẵn sàng","file":"Chi-tieu-10-2026.pdf","action":"Mở PDF"},
+      "failed": "Không tải báo cáo lên được vì mất kết nối. Kiểm tra mạng rồi thử lại.",
+      "history": "Tháng 9, 2026 · Chi-tieu-09-2026.pdf"
+    },
+    {
+      "id": "ST-01", "title": "Hồ sơ", "navigation": "Hồ sơ",
+      "account": {"name":"Nguyễn Minh","email":"minh@example.com","description":"Sinh viên · Tài khoản mẫu"},
+      "settings": ["Thông báo ngân sách", "Xuất báo cáo PDF", "Đơn vị tiền tệ · VND", "Ngôn ngữ · Tiếng Việt"],
+      "demo": ["Remote Config · Ngưỡng mặc định 80%", "Remote Config · Báo cáo PDF đang bật", "Crashlytics · Kiểm thử Lab 3"],
+      "actions": ["Đăng xuất"],
+      "signOutDialog": {"title":"Đăng xuất khỏi tài khoản?","body":"Dữ liệu đã lưu vẫn được giữ. Bạn cần đăng nhập lại để tiếp tục quản lý chi tiêu.","cancel":"Ở lại","confirm":"Đăng xuất"}
+    }
+  ],
+  "prototype": {
+    "flow1": ["HM-01", "TX-02", "TX-02 submitting", "TX-03", "HM-01 updated"],
+    "flow2": ["TX-01", "TX-03", "Delete confirmation overlay", "TX-01 undo", "TX-03 restored"],
+    "flow3": ["BD-01 warning", "BD-02", "BD-03 edit", "BD-02 updated", "IN-01", "EX-01", "EX-01 processing", "EX-01 ready", "PDF preview"],
+    "dependencies": "HM/TX/AU/NT dùng frame do thành viên 2 cung cấp; không dựng thay màn hình thuộc phạm vi thành viên 2."
+  }
+}
