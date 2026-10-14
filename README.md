@@ -34,16 +34,21 @@ Chi tiết kiến trúc thông tin và sơ đồ: [ux/user-flow.md](ux/user-flow
 
 ## Figma
 
-- Link: `[BỔ SUNG LINK FIGMA - bật quyền Anyone with the link can view]`
+- Link: [PRM393 Lab 02 - Expense Tracker](https://www.figma.com/design/rz0luZHIOihvPCvL6UptPl/PRM393_Lab02_ExpenseTracker?node-id=1-2&t=h0JKZKs9SUXr4RZX-1)
 - Frame Final UI: `360 x 800 dp`
 - Kiểm tra responsive: `360 dp` và `412 dp`
 - Pages bắt buộc: `01 User Flow`, `02 Wireframe`, `03 Final UI`, `04 Design System`, `05 Components`, `06 Prototype`
+
+## Google Stitch
+
+- Link: [Expense Tracker project](https://stitch.withgoogle.com/projects/10313498934502515057?pli=1)
+- Bằng chứng các phiên bản và vòng lặp: [`assets/stitch/`](assets/stitch/)
 
 ## Công cụ AI
 
 | Công cụ | Mục đích | Trạng thái |
 | --- | --- | --- |
-| Google Stitch | Tạo UI ban đầu và các vòng tinh chỉnh | Chưa thực hiện |
+| Google Stitch | Tạo UI ban đầu và 3 vòng tinh chỉnh | Đã thực hiện |
 | ChatGPT/Codex | Phân tích yêu cầu, phản biện UX và hỗ trợ tài liệu | Đang sử dụng |
 
 Mọi prompt, kết quả và quyết định phải được ghi nguyên văn trong [ai/ai-design-log.md](ai/ai-design-log.md).
