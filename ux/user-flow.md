@@ -1,5 +1,11 @@
 # Information Architecture và User Flow
 
+## Persona liên quan — bổ sung 2026-10-15
+
+Ba flow dưới đây giữ nguyên. [P01 Primary](persona.md) ưu tiên Flow 1; P02 Secondary ưu tiên phần kiểm soát ngân sách của Flow 3; P03 Secondary ưu tiên Flow 2 và phần rà soát/báo cáo Flow 3. Đây là ưu tiên task, không giới hạn persona vào một flow hoặc coi ba flow là bằng chứng có ba phân khúc.
+
+Đối chiếu chi tiết [coverage matrix](discovery-and-evidence.md#4-persona-coverage-matrix-và-đối-chiếu-dự-án) và [SC01–SC03 / test plan](scenarios-and-tests.md). Personas là giả định chưa xác thực; mô tả flow không phải kết quả kiểm thử runtime.
+
 ## 1. Information architecture
 
 ### Cấp điều hướng chính

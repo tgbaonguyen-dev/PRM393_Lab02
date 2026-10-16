@@ -1,5 +1,7 @@
 # Flutter Handoff - Expense Tracker
 
+Persona review được bổ sung ngày 2026-10-15: [P01 ghi nhanh, P02 kiểm soát hạn mức, P03 rà soát độ đúng](../ux/persona.md). Các persona đều chưa xác thực và dùng cùng screen/flow hiện có; không thay đổi API, data model, widget hay thêm role. Dùng [scenario/test matrix](../ux/scenarios-and-tests.md) làm đầu vào kiểm thử sau này; không xem test kế hoạch là acceptance đã pass.
+
 ## 1. Global implementation rules
 
 - Android-first Flutter app.

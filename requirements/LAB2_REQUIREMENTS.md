@@ -1,4 +1,4 @@
-# Yêu cầu PRM393 Lab 2
+# Yêu cầu PRM323 Lab 2
 
 Tài liệu này là checklist làm bài được chuẩn hóa từ đề Lab 2. Khi có khác biệt, đề bài gốc và hướng dẫn trực tiếp của giảng viên được ưu tiên.
 

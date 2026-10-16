@@ -2,6 +2,8 @@
 
 Tài liệu này phải được cập nhật trong lúc làm. Không điền kết quả, quyết định hoặc đường dẫn ảnh nếu chưa thực hiện thật.
 
+Bổ sung hiện tại (2026-10-15): [Nhật ký tinh chỉnh Proto-Persona](persona-refinement-log.md). Giữ nguyên lịch sử prompt bên dưới; hai Secondary mới không được trình bày như đầu vào của các vòng UI đã làm trước đó.
+
 ## 1. AI tools declaration
 
 | Công cụ | Mục đích | Ngày sử dụng | Bằng chứng |
@@ -44,18 +46,17 @@ Style: calm, clear, trustworthy. Primary #146C5A, on-primary #FFFFFF, background
   - assets/stitch/initial-home.png
   - assets/stitch/initial-add-expense.png
   - assets/stitch/initial-transaction-detail.png
-- Nhận xét ban đầu: (viết ở dưới)
+- Nhận xét ban đầu: Bố cục đã bao phủ đúng luồng thêm khoản chi, nhưng thẻ ngân sách trên Home có quá nhiều yếu tố cạnh tranh; trạng thái lưu/lỗi mạng chưa đầy đủ; cảnh báo ngân sách chưa chứng minh được accessibility. Ba vấn đề này được xử lý lần lượt ở các vòng 1–3 bên dưới.
 
 ## 3. Iteration 1 - Visual hierarchy
 
 ### Vấn đề cụ thể
 
-`[Ví dụ cần xác minh: hành động Thêm khoản chi chưa nổi bật trên Home]`
+Thẻ ngân sách trên Home cùng lúc hiển thị chip phần trăm, tổng chi, số còn lại, hạn mức, dòng trạng thái, thanh tiến độ có mốc và gợi ý theo ngày. Quá nhiều điểm nhấn làm số tiền còn lại — thông tin Minh cần đọc nhanh — không có thứ bậc rõ ràng.
 
 ### Prompt nguyên văn
 
 ```text
-[DÁN PROMPT]
 Revise only the Home Dashboard screen to improve visual hierarchy. Keep the Add Expense and Transaction Detail screens unchanged.
 
 Problem: the top budget card has too many competing elements (a "65% chi tiêu" chip, total spent, remaining budget, monthly limit, a status row, a progress bar with 50/80/100% markers, and a daily suggestion box). The remaining budget, which answers Minh's main question, has the same small size as the monthly limit.
@@ -74,7 +75,7 @@ Changes: keep total spent this month as the largest number. Make "Còn lại" th
 
 - Trạng thái: Chỉnh sửa
 - Lý do liên quan persona/heuristic/ràng buộc: Giữ thứ bậc Stitch đề xuất (tổng chi lớn nhất, "Còn lại" nổi hơn "Hạn mức", một dòng trạng thái có icon, nhãn chữ và phần trăm, một thanh tiến độ) vì Minh chỉ mở app dưới một phút và cần biết ngay còn bao nhiêu trong ngân sách; phù hợp nguyên tắc "Số tiền và ngân sách quan trọng hơn trang trí" trong DESIGN.md. Không sao chép nguyên bố cục Stitch: dựng lại bằng Financial Card và Budget Progress có sẵn, và sửa các chữ bị cắt để giữ cỡ chữ nội dung tối thiểu 14 sp.
-- Figma frame phản ánh quyết định: Page 05, component Financial Card và Budget Progress (khung HM-01 trên Page 03 sẽ cập nhật khi dựng xong)
+- Figma evidence: Page 05 có Financial Card và Budget Progress; ảnh Final UI hiện tại của HM-01 được lưu trong `assets/figma/final-ui/`.
 
 ## 4. Iteration 2 - Error recovery
 
@@ -85,7 +86,6 @@ Spec TX-02 yêu cầu có trạng thái đang lưu (submitting) và lỗi mạng
 ### Prompt nguyên văn
 
 ```text
-[DÁN NGUYÊN VĂN PROMPT VÒNG 2 ĐÃ GỬI STITCH]
 Revise only the Add Expense screen to improve error recovery. Keep the Home Dashboard and Transaction Detail screens unchanged.
 
 Problem: the screen only shows an inline validation error for amount = 0. It has no state for saving in progress or for a network failure, even though Minh often has weak mobile data.
@@ -124,7 +124,7 @@ Tất cả thành phần đều tuân thủ chặt chẽ cỡ chữ ≥ 14sp, v�
 
 - Trạng thái: Chỉnh sửa
 - Lý do: Giữ cấu trúc Stitch đề xuất: nút Lưu hiện vòng xoay và chữ "Đang lưu...", banner lỗi mạng có icon, nguyên nhân dễ hiểu, câu "Dữ liệu bạn nhập vẫn được giữ nguyên vẹn" và nút "Thử lại", vì phù hợp nguyên tắc "Form ngắn, giữ dữ liệu khi có lỗi" và persona mạng yếu. Chỉnh sửa hai điểm khi dựng Figma: (1) cả hai trạng thái Stitch vẫn vẽ số tiền 0 với viền đỏ, trong khi số tiền 0 là lỗi nhập liệu không thể gửi đi, nên dùng số tiền hợp lệ và viền bình thường; (2) nút "Thử lại" Stitch vẽ màu đỏ, trong khi đỏ dành cho lỗi nhập liệu và hành động nguy hiểm, nên dùng màu primary cho nhất quán với Error State và Dialog lỗi.
-- Figma frame: Page 05, component Primary Button (State Loading), Error State, Dialog (Error); frame TX-02 trên Page 03 (CẬP NHẬT SAU KHI DỰNG XONG)
+- Figma evidence: Page 05 có Primary Button (Loading), Error State và Dialog; các ảnh TX-02 default, submitting và error hiện nằm trong `assets/figma/final-ui/`.
 
 ## 5. Iteration 3 - Accessibility and budget status
 
@@ -183,7 +183,7 @@ Cả hai màn hình đều bảo toàn nghiêm ngặt các quy chuẩn: cỡ ch�
 
 - Trạng thái: Chỉnh sửa
 - Lý do: Giữ cách thể hiện trạng thái của Stitch (icon, nhãn chữ, phần trăm, thanh tiến độ, một dòng gợi ý không phán xét, không chỉ dùng màu) vì phù hợp nguyên tắc "Cảnh báo luôn có nguyên nhân và bước tiếp theo" và nhu cầu accessibility của Minh. Chỉnh sửa contrast: chữ nhãn "Sắp vượt ngân sách" dùng `color/textPrimary` (khoảng 13:1 trên `#FFE2B8`), còn `color/warning` chỉ dùng cho icon và thanh tiến độ, nên không phải đổi token. Các phần trăm danh mục (57%, 20%, 13%) và danh sách giao dịch trong hai bản này chưa đổi theo tổng chi, nên không sao chép sang Figma.
-- Figma frame: Page 05, component Budget Progress (Status Safe, Warning, Over); frame HM-01 trên Page 03 (CẬP NHẬT SAU KHI DỰNG XONG)
+- Figma evidence: Page 05 có Budget Progress cho Safe, Warning và Over; ảnh Final UI hiện tại của HM-01 nằm trong `assets/figma/final-ui/`.
 
 ## 6. AI critique
 
@@ -289,7 +289,7 @@ STT	Vấn đề	                                     |Màn hình	        			|   
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Transaction Detail | Nút Xóa thiếu hộp thoại xác nhận (AI #1) | H5 Error prevention | Chấp nhận | Flow 2 trong user-flow.md đã có dialog xác nhận rồi Snackbar Undo; nút xóa ghi cụ thể "Xóa giao dịch" để tránh chạm nhầm khi dùng một tay | Dialog (Confirmation) và Snackbar Undo, Page 05 |
 | 2 | Add Expense, Transaction Detail | Nút Back ngoài vùng ngón cái, đề xuất vuốt để quay lại (AI #2) | H7 Flexibility | Từ chối | Android đã có nút và cử chỉ Back hệ thống; handoff yêu cầu Back quay về màn hình nguồn và prototype phải có nút Back hiển thị; cử chỉ vuốt không dựng được trong Figma | App Bar có Leading=Back, Page 05 |
-| 3 | Add Expense, Transaction Detail | Thiếu phản hồi sau khi lưu (AI #3) | H1 Visibility of system status | Chỉnh sửa | Spec nói lưu thành công thì chuyển tới TX-03 chứ không về Home, nên Snackbar xác nhận "Đã lưu" đặt ở TX-03, dùng lại component Snackbar | Snackbar Undo (Page 05); frame TX-03 (CẬP NHẬT SAU) |
+| 3 | Add Expense, Transaction Detail | Thiếu phản hồi sau khi lưu (AI #3) | H1 Visibility of system status | Chỉnh sửa | Spec nói lưu thành công thì chuyển tới TX-03 chứ không về Home, nên phản hồi xác nhận được thể hiện tại màn hình đích thay vì chuyển thẳng về Home | Component Snackbar Undo (Page 05) và ảnh TX-03 trong `assets/figma/final-ui/` |
 | 4 | Home, Transaction Detail | Chữ phụ tương phản thấp (AI #4) | WCAG contrast 4.5:1 | Chỉnh sửa | Con số của AI là ước lượng nên đo lại bằng ống hút; nếu Stitch dùng xám nhạt hơn token thì thay bằng color/textSecondary (#52605C, khoảng 6:1 trên nền trắng); không dùng mã #3F4946 của AI vì nằm ngoài token | Design System, Variables color/textSecondary (Page 04) |
 | 5 | Add Expense | Phím số tự vẽ và chip cộng nhanh sát nhau (AI #5) | H5 Error prevention, touch target 48dp | Chỉnh sửa | Handoff TX-02 dùng bàn phím số hệ thống nên bỏ bàn phím số tự vẽ; chip cộng nhanh là tùy chọn, nếu giữ thì chạm tối thiểu 48dp và khoảng cách tối thiểu 8dp | Amount Field (Page 05), không có bàn phím tự vẽ |
 | 6 | Add Expense | Ô nhập thiếu dấu hiệu có thể nhập liệu (AI #6) | H6 Recognition | Chấp nhận | Component Text Field đã có viền 1dp color/outline, nhãn và placeholder | Text Field, Page 05 |
@@ -297,19 +297,19 @@ STT	Vấn đề	                                     |Màn hình	        			|   
 
 ## 8. Final declaration
 
-- [ ] Mọi prompt được lưu nguyên văn.
-- [ ] Mọi ảnh before/after tồn tại và mở được.
-- [ ] Có ít nhất 3 iteration khác nhau.
-- [ ] Có ít nhất 5 findings gắn với màn hình.
-- [ ] Mọi finding quan trọng có quyết định và lý do.
-- [ ] Final UI phản ánh các quyết định đã chấp nhận/chỉnh sửa.
+- [x] Mọi prompt đã sử dụng trong ba vòng Stitch được lưu nguyên văn.
+- [x] Ảnh before/after của ba vòng tồn tại trong `assets/stitch/`.
+- [x] Có 3 iteration với ba mục tiêu khác nhau: hierarchy, error recovery và accessibility/status.
+- [x] Có ít nhất 5 findings gắn với màn hình cụ thể.
+- [x] Các finding được chọn đều có quyết định Chấp nhận, Chỉnh sửa hoặc Từ chối kèm lý do.
+- [x] Ảnh Final UI và component export hiện có phản ánh các quyết định được giữ lại; hành vi prototype vẫn phải được kiểm tra trực tiếp khi demo.
 
 ## Phụ lục A - Prompt dựng component trong Figma
 
 ### A.0 Phân chia công việc
 
 - Công cụ AI: AI tích hợp trong Figma (tên hiển thị trong mục Agents)
-- Tự làm tay (không dùng AI): Variables màu, spacing, radius; text styles; [bổ sung các phần bạn thật sự tự làm, ví dụ Primary Button]
+- Tự làm tay (không dùng AI): Variables màu, spacing và radius; text styles; chuẩn hóa tên component, kiểm tra nội dung, sửa lỗi bố cục sau khi AI tạo và nối prototype.
 - Dùng AI: Text Field, Amount Field, Financial Card, Category Card, Navigation Bar, App Bar, Dialog, Secondary Button, Text Button, Transaction Row, Snackbar Undo, FAB, Budget Progress, Loading Skeleton, Empty State, Error State
 ### A.1 TextField
 
