@@ -297,7 +297,7 @@ Mỗi FR được chấp nhận bằng các business rules, input rules, error c
 | FR-03.10 | Form phải hiển thị lỗi tại trường liên quan và giữ mọi dữ liệu đã nhập. |
 | FR-03.11 | Trong lúc lưu, Save phải hiển thị loading và không nhận thao tác lặp. |
 | FR-03.12 | Sau khi lưu thành công, hệ thống quay về màn hình nguồn với số liệu đã cập nhật. Nếu `occurredAt` thuộc kỳ khác kỳ đang xem, hệ thống phải nêu rõ kỳ vừa cập nhật và cung cấp action mở kỳ đó. |
-| FR-03.13 | Khi lưu thất bại, form phải giữ dữ liệu, giải thích lỗi và cung cấp Retry. |
+| FR-03.13 | Khi lưu thất bại, hệ thống phải giữ người dùng trên chính form TX-02, giữ dữ liệu, cho phép sửa trực tiếp, giải thích lỗi và cung cấp Retry. Save Failed không phải màn hình riêng và không được hiển thị action `Quay lại chỉnh sửa`. |
 | FR-03.14 | Người dùng phải xóa được giao dịch theo BR-35 đến BR-40. |
 
 ### 8.4 FR-04 Monthly spending plan
@@ -477,7 +477,7 @@ Truy cập bản ghi của người dùng khác bị từ chối và được bi
 | `VAL_DATE_FUTURE` | `occurredAt` sau ngày hiện tại | Ngày giao dịch không thể nằm trong tương lai. | Chọn ngày hợp lệ. | FR-03.09 |
 | `VAL_MERCHANT_LENGTH` | Merchant quá 100 ký tự | Tên nơi chi không được quá 100 ký tự. | Rút ngắn nội dung. | FR-03.08 |
 | `VAL_NOTE_LENGTH` | Note quá 200 ký tự | Ghi chú không được quá 200 ký tự. | Rút ngắn nội dung. | FR-03.08 |
-| `SAVE_LOCAL_FAILED` | Không thể lưu bền vững trên thiết bị | Không thể lưu khoản chi. Dữ liệu của bạn vẫn được giữ. | Retry; không báo thành công. | FR-03.13 |
+| `SAVE_LOCAL_FAILED` | Không thể lưu bền vững trên thiết bị | Không thể lưu khoản chi. Dữ liệu của bạn vẫn được giữ. | Giữ tại TX-02 để sửa trực tiếp hoặc Retry; không báo thành công và không hiển thị `Quay lại chỉnh sửa`. | FR-03.13 |
 | `DUP_CATEGORY_BUDGET` | Budget đã tồn tại cho category và kỳ | Danh mục đã có ngân sách trong kỳ này. | Mở budget hiện có để sửa. | FR-05.02 |
 | `BUDGET_ALLOCATION_EXCEEDED` | Tổng sub-cap vượt spendingLimit | Tổng phân bổ đang vượt hạn mức tháng. | Giảm một hoặc nhiều hạn mức; UI hiển thị số tiền vượt được tính từ input hiện tại. | FR-05.04 |
 | `VAL_THRESHOLD_RANGE` | Threshold không nằm giữa 0 và 1 | Ngưỡng cảnh báo phải lớn hơn 0% và nhỏ hơn 100%. | Sửa threshold. | BR-13 |

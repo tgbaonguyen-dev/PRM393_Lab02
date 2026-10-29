@@ -59,11 +59,11 @@ flowchart TD
 | ID | Condition | Behavior |
 | --- | --- | --- |
 | FL-01-A | Invalid input | Display a text error at the field, move focus to the first error, preserve input, and allow correction |
-| FL-01-B | Save fails | Preserve input, explain the cause, and allow Retry without creating a duplicate record |
+| FL-01-B | Save fails | Keep the user on the same TX-02 form, preserve input, explain the cause, and allow Retry without creating a duplicate record; do not open a separate error screen or show a `Back to Edit` action |
 | FL-01-C | Back after the form has changed | Request Discard confirmation; Stay preserves the form |
 | FL-01-D | occurredAt belongs to another period | Save to the period determined by occurredAt, clearly identify the updated period, and provide the `Xem kỳ này` action |
 
-Back from an unchanged form returns to the source. After Save, Back must not reopen the submitted form.
+Save Failed is an inline state of TX-02: fields remain directly editable and `Retry` resubmits the current values. A `Back to Edit` action is unnecessary. Back from an unchanged form returns to the source. After Save, Back must not reopen the submitted form.
 
 ## 4. FL-02 Delete and restore
 

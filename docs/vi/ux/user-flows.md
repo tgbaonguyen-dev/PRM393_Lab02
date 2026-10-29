@@ -59,11 +59,11 @@ flowchart TD
 | ID | Điều kiện | Hành vi |
 | --- | --- | --- |
 | FL-01-A | Input không hợp lệ | Hiện lỗi bằng chữ tại trường, đưa focus đến lỗi đầu tiên, giữ input và cho sửa |
-| FL-01-B | Lưu thất bại | Giữ input, nêu nguyên nhân, Retry không tạo bản ghi trùng |
+| FL-01-B | Lưu thất bại | Giữ người dùng trên chính form TX-02, giữ input, nêu nguyên nhân và cho Retry không tạo bản ghi trùng; không mở màn hình lỗi riêng và không hiển thị action `Quay lại chỉnh sửa` |
 | FL-01-C | Back khi form đã đổi | Xác nhận Discard; Stay giữ nguyên form |
 | FL-01-D | occurredAt thuộc kỳ khác | Lưu vào kỳ của occurredAt, báo rõ kỳ đã cập nhật và cung cấp action `Xem kỳ này` |
 
-Back từ form chưa đổi quay về nguồn. Sau Save, Back không được mở lại form đã submit.
+Save Failed là một state nội tuyến của TX-02: các trường vẫn sửa trực tiếp được và `Thử lại` gửi lại dữ liệu hiện tại. Không cần action `Quay lại chỉnh sửa`. Back từ form chưa đổi quay về nguồn. Sau Save, Back không được mở lại form đã submit.
 
 ## 4. FL-02 Xóa và khôi phục
 

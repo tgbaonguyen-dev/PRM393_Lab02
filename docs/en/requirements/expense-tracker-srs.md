@@ -297,7 +297,7 @@ Each FR is accepted through the related business rules, input rules, error catal
 | FR-03.10 | The form shall display each error at the relevant field and preserve all entered data. |
 | FR-03.11 | During saving, Save shall show loading and reject repeated interaction. |
 | FR-03.12 | After a successful save, the system shall return to the source screen with updated figures. If `occurredAt` belongs to a period other than the viewed period, the system shall identify the updated period and provide an action to open it. |
-| FR-03.13 | If saving fails, the form shall preserve data, explain the error, and provide Retry. |
+| FR-03.13 | If saving fails, the system shall keep the user on the same TX-02 form, preserve the data, allow direct editing, explain the error, and provide Retry. Save Failed is not a separate screen and shall not show a `Back to Edit` action. |
 | FR-03.14 | A user shall be able to delete a transaction according to BR-35 through BR-40. |
 
 ### 8.4 FR-04 Monthly Spending Plan
@@ -477,7 +477,7 @@ Access to another user's record is denied as not found (`RESOURCE_NOT_FOUND`) so
 | `VAL_DATE_FUTURE` | `occurredAt` is after the current date | The transaction date cannot be in the future. | Select a valid date. | FR-03.09 |
 | `VAL_MERCHANT_LENGTH` | Merchant exceeds 100 characters | Merchant name cannot exceed 100 characters. | Shorten the value. | FR-03.08 |
 | `VAL_NOTE_LENGTH` | Note exceeds 200 characters | Note cannot exceed 200 characters. | Shorten the value. | FR-03.08 |
-| `SAVE_LOCAL_FAILED` | Durable on-device save fails | Unable to save the expense. Your data is preserved. | Retry; do not report success. | FR-03.13 |
+| `SAVE_LOCAL_FAILED` | Durable on-device save fails | Unable to save the expense. Your data is preserved. | Stay on TX-02 to edit directly or Retry; do not report success or show `Back to Edit`. | FR-03.13 |
 | `DUP_CATEGORY_BUDGET` | A budget already exists for the category and period | This category already has a budget for the period. | Open and edit the existing budget. | FR-05.02 |
 | `BUDGET_ALLOCATION_EXCEEDED` | Total sub-caps exceed `spendingLimit` | Total allocation exceeds the monthly limit. | Reduce one or more limits; the UI shows excess calculated from current input. | FR-05.04 |
 | `VAL_THRESHOLD_RANGE` | Threshold is not between 0 and 1 | Warning threshold must be greater than 0% and less than 100%. | Correct the threshold. | BR-13 |
